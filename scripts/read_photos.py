@@ -2,9 +2,9 @@
 
 Usage:
   python scripts/read_photos.py kolkata gemma4:e4b            # all photos
-  python scripts/read_photos.py kolkata gemma4:e2b --limit 40 # first 40 only
+  python scripts/read_photos.py kolkata gemma4:e2b --sample   # only the 40 labelled photos
 
-Writes data/gemma_<city>_<model>.json (one result per photo; reruns skip photos already done).
+Writes data/gemma_<city>_<model>.json (one result per photo; reruns skip photos with a usable answer).
 For the main model, --seats also writes data/gemma_seats_<city>.json, the seats the route planner may use.
 """
 import argparse
@@ -15,7 +15,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from bench_to_bench import gemma  # noqa: E402
+from bench_to_bench import gemma, sample  # noqa: E402
 
 
 def results_path(city, model):
@@ -27,17 +27,22 @@ def main():
     ap.add_argument("city")
     ap.add_argument("model")
     ap.add_argument("--limit", type=int)
+    ap.add_argument("--sample", action="store_true", help="only the photos on the labelling page")
     ap.add_argument("--seats", action="store_true", help="also write the seats file used by build_city.py")
     args = ap.parse_args()
 
-    photos = json.loads((ROOT / f"data/photos_{args.city}.json").read_text(encoding="utf-8"))
-    photos = sorted(photos, key=lambda p: p["id"])[: args.limit]
+    photos_json = ROOT / f"data/photos_{args.city}.json"
+    photos = sorted(json.loads(photos_json.read_text(encoding="utf-8")), key=lambda p: p["id"])
+    if args.sample:
+        wanted = set(sample.sample_ids(photos_json))
+        photos = [p for p in photos if p["id"] in wanted]
+    photos = photos[: args.limit]
     out_path = results_path(args.city, args.model)
     results = json.loads(out_path.read_text(encoding="utf-8")) if out_path.exists() else {}
 
     for i, photo in enumerate(photos, 1):
-        if photo["id"] in results:
-            continue
+        if results.get(photo["id"], {}).get("ok"):
+            continue  # failed photos are tried again on a rerun
         image = ROOT / "data/cache/photos" / args.city / f"{photo['id']}.jpg"
         results[photo["id"]] = gemma.describe_photo(image, args.model)
         r = results[photo["id"]]

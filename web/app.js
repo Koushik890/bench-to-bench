@@ -79,17 +79,19 @@ function addSeat(s) {
 
 function renderSummary(data, v) {
   const r = state.route;
-  const gemmaCount = r ? r.seats.filter((s) => s.source === "gemma").length : 0;
+  const unique = r ? [...new Map(r.seats.map((s) => [s.id, s])).values()] : [];
+  const gemmaCount = unique.filter((s) => s.source === "gemma").length;
   let html = "";
   if (r) {
-    html += `<p class="big">${(r.length_m / 1000).toFixed(2)} km loop · never more than ${r.max_gap_m} m without a seat</p><ul>`;
-    html += `<li>${r.seats.length} places to sit on the way` +
+    const shape = r.turns.some((t) => t.dir === "around") ? "there-and-back walk" : "loop";
+    html += `<p class="big">${(r.length_m / 1000).toFixed(2)} km ${shape} · never more than ${r.max_gap_m} m without a seat</p><ul>`;
+    html += `<li>${unique.length} places to sit on the way` +
       (gemmaCount ? ` (<span class="legend-dot" style="background:#fb923c"></span>${gemmaCount} found by Gemma in photos)` : "") + "</li>";
     html += `<li>No steps, no gravel or cobblestones</li>`;
     html += `<li>${r.turns.length} turns, spoken 30 m ahead</li></ul>`;
   } else {
     html += `<p class="big bad">No safe walk possible here.</p>`;
-    html += `<p>${v.no_route_reason ? "The map knows too few places to sit: " + v.no_route_reason + "." : "No loop keeps every stretch under " + data.max_gap_m + " m between seats."}</p>`;
+    html += `<p>${v.no_route_reason ? "The map is no help: " + v.no_route_reason + "." : "No loop keeps every stretch under " + data.max_gap_m + " m between seats."}</p>`;
   }
   html += `<ul><li>${data.name}: ${v.seats_total} known places to sit, ${Math.round(v.coverage_75m * 100)}% of streets within 75 m of one</li></ul>`;
   $("#summary").innerHTML = html;

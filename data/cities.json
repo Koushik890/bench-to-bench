@@ -7,6 +7,7 @@
   "kolkata": {
     "name": "Kolkata, Kalighat-Hazra",
     "bbox": [22.515, 88.340, 22.528, 88.357],
-    "start": {"name": "Hazra crossing", "lat": 22.5220, "lon": 88.3500}
+    "start": {"name": "Hazra crossing", "lat": 22.5220, "lon": 88.3500},
+    "lengths_m": [250, 600, 1000]
   }
 }

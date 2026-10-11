@@ -137,7 +137,9 @@ def describe(graph, loop, seats, toilets=(), min_turn_deg=40):
         back = _point_at(path, cum, cum[i] - 12)
         ahead = _point_at(path, cum, cum[i] + 12)
         angle = turn_angle(bearing_deg(back, path[i]), bearing_deg(path[i], ahead))
-        if abs(angle) >= min_turn_deg:
+        if abs(angle) >= 150:
+            turns.append({"at_m": round(cum[i]), "dir": "around"})
+        elif abs(angle) >= min_turn_deg:
             turns.append({"at_m": round(cum[i]), "dir": "left" if angle < 0 else "right"})
 
     warnings = []

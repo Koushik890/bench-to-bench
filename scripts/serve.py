@@ -8,22 +8,21 @@ Usage: python scripts/serve.py            then open http://localhost:8000/web/  
 - POST /labels      saves your answers to eval/labels.json
 """
 import json
-import random
 import sys
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+from bench_to_bench import sample  # noqa: E402
+
 CITY = "kolkata"
-SAMPLE_SIZE = 40
 LABELS = ROOT / "eval/labels.json"
 
 
 def sample_ids():
-    """The same 40 photos every time: a seeded random pick from all downloaded photos."""
-    photos = json.loads((ROOT / f"data/photos_{CITY}.json").read_text(encoding="utf-8"))
-    ids = sorted(p["id"] for p in photos)
-    return random.Random(2026).sample(ids, SAMPLE_SIZE)
+    return sample.sample_ids(ROOT / f"data/photos_{CITY}.json")
 
 
 class Handler(SimpleHTTPRequestHandler):

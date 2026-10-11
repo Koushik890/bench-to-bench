@@ -1,0 +1,65 @@
+[
+ {
+  "id": "mapillary/1088000724028029",
+  "lat": 22.5220933,
+  "lon": 88.346615,
+  "kind": "platform_or_ledge",
+  "source": "gemma",
+  "photo": "1088000724028029",
+  "note": "There is a low wall/ledge visible near the shops where someone could sit."
+ },
+ {
+  "id": "mapillary/1106875881703518",
+  "lat": 22.5225894,
+  "lon": 88.3470619,
+  "kind": "chair",
+  "source": "gemma",
+  "photo": "1106875881703518",
+  "note": "There are several chairs visible outside the shop entrance."
+ },
+ {
+  "id": "mapillary/1464314865559996",
+  "lat": 22.52228,
+  "lon": 88.346605,
+  "kind": "other",
+  "source": "gemma",
+  "photo": "1464314865559996",
+  "note": "There are low ledges and steps visible near the shops on the right side of the street."
+ },
+ {
+  "id": "mapillary/1520563373132768",
+  "lat": 22.5221833,
+  "lon": 88.3466067,
+  "kind": "platform_or_ledge",
+  "source": "gemma",
+  "photo": "1520563373132768",
+  "note": "There is a low ledge/platform visible in front of the shops where someone could sit."
+ },
+ {
+  "id": "mapillary/1622047766131354",
+  "lat": 22.5221417,
+  "lon": 88.3466133,
+  "kind": "platform_or_ledge",
+  "source": "gemma",
+  "photo": "1622047766131354",
+  "note": "There is a low wall/platform ledge visible near the shops where someone could sit."
+ },
+ {
+  "id": "mapillary/219348076211525",
+  "lat": 22.5158573,
+  "lon": 88.3489212,
+  "kind": "platform_or_ledge",
+  "source": "gemma",
+  "photo": "219348076211525",
+  "note": "There is a low concrete platform/ledge near the shops where people are resting."
+ },
+ {
+  "id": "mapillary/2311675506350781",
+  "lat": 22.5223514,
+  "lon": 88.3468602,
+  "kind": "platform_or_ledge",
+  "source": "gemma",
+  "photo": "2311675506350781",
+  "note": "There is a low ledge/platform visible near the shops where someone could sit."
+ }
+]
