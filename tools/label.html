@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Label Photos</title>
+  <style>
+    :root { --green: #14532d; --muted: #57534e; }
+    body { margin: 0; font: 17px/1.4 system-ui, sans-serif; background: #fafaf9; color: #1c1917; }
+    header { background: var(--green); color: #fff; padding: 12px 16px; position: sticky; top: 0; z-index: 2; }
+    header h1 { margin: 0; font-size: 1.15rem; }
+    header p { margin: 2px 0 0; font-size: .9rem; opacity: .9; }
+    main { max-width: 900px; margin: 0 auto; padding: 12px 16px 80px; }
+    .photo { background: #fff; border: 1px solid #e7e5e4; border-radius: 12px; margin: 0 0 16px; overflow: hidden; }
+    .photo.done { border-color: #16a34a; }
+    .photo img { width: 100%; display: block; background: #e7e5e4; aspect-ratio: 4/3; object-fit: cover; }
+    .q { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 12px; border-top: 1px solid #f5f5f4; }
+    .q span { flex: 1; }
+    .q small { display: block; color: var(--muted); font-size: .8rem; }
+    .q button { font: inherit; min-width: 64px; min-height: 44px; border-radius: 10px; border: 1.5px solid var(--green); background: #fff; color: var(--green); }
+    .q button[aria-pressed="true"] { background: var(--green); color: #fff; }
+    .num { padding: 8px 12px; color: var(--muted); font-size: .85rem; }
+    .num a { color: var(--muted); }
+    #status { font-weight: 600; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Label 40 Kolkata street photos</h1>
+    <p>Answer each question for what is visible near the camera (about 20 m). <span id="status"></span></p>
+  </header>
+  <main id="list"></main>
+  <script>
+    const QUESTIONS = [
+      ["seat", "A place to sit?", "Bench, tea-stall bench, raised platform or ledge, building steps, chair — open to passers-by"],
+      ["steps", "Steps or a high kerb to climb?", "On the footpath or the way ahead, higher than about 15 cm"],
+      ["broken_surface", "Broken or blocked footpath?", "Potholes, dug up, rubble, broken paving"],
+      ["shade", "Shade where you'd walk?", "Trees or awnings over the footpath"],
+    ];
+    let ids = [], labels = {}, saveTimer = null;
+
+    function render() {
+      const list = document.getElementById("list");
+      list.innerHTML = ids.map((id, i) => `
+        <section class="photo" id="p${id}">
+          <img loading="lazy" src="/photos/${id}.jpg" alt="Street photo ${i + 1} of ${ids.length} from Kolkata">
+          <div class="num">${i + 1} / ${ids.length} · <a href="https://www.mapillary.com/app/?pKey=${id}" target="_blank" rel="noopener">photo ${id} on Mapillary</a></div>
+          ${QUESTIONS.map(([key, q, hint]) => `
+            <div class="q"><span>${q}<small>${hint}</small></span>
+              <button data-id="${id}" data-key="${key}" data-val="true">Yes</button>
+              <button data-id="${id}" data-key="${key}" data-val="false">No</button>
+            </div>`).join("")}
+        </section>`).join("");
+      refresh();
+    }
+
+    function refresh() {
+      document.querySelectorAll("button[data-key]").forEach((b) => {
+        const v = labels[b.dataset.id]?.[b.dataset.key];
+        b.setAttribute("aria-pressed", String(v !== undefined && String(v) === b.dataset.val));
+      });
+      let done = 0;
+      for (const id of ids) {
+        const complete = QUESTIONS.every(([k]) => labels[id]?.[k] !== undefined);
+        document.getElementById("p" + id).classList.toggle("done", complete);
+        done += complete;
+      }
+      document.getElementById("status").textContent = `${done} / ${ids.length} photos done` + (done === ids.length ? " — all saved, thank you!" : "");
+    }
+
+    function save() {
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(() => fetch("/labels", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(labels) }), 300);
+    }
+
+    document.addEventListener("click", (e) => {
+      const b = e.target.closest("button[data-key]");
+      if (!b) return;
+      labels[b.dataset.id] = { ...(labels[b.dataset.id] || {}), [b.dataset.key]: b.dataset.val === "true" };
+      refresh();
+      save();
+    });
+
+    fetch("/sample").then((r) => r.json()).then((d) => { ids = d.ids; labels = d.labels || {}; render(); });
+  </script>
+</body>
+</html>

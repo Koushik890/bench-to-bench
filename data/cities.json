@@ -1,0 +1,12 @@
+{
+  "mainz": {
+    "name": "Mainz-Neustadt 55118",
+    "bbox": [49.997, 8.250, 50.013, 8.278],
+    "start": {"name": "Goetheplatz", "lat": 50.0049, "lon": 8.2577}
+  },
+  "kolkata": {
+    "name": "Kolkata, Kalighat-Hazra",
+    "bbox": [22.515, 88.340, 22.528, 88.357],
+    "start": {"name": "Hazra crossing", "lat": 22.5220, "lon": 88.3500}
+  }
+}
