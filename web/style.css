@@ -32,7 +32,7 @@ main { max-width: 760px; margin: 0 auto; padding: 12px 16px 24px; }
 .actions button:disabled { opacity: .4; }
 .credits { color: var(--muted); font-size: .8rem; }
 .legend-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 4px; }
-#walk { position: fixed; inset: 0; background: #000; color: #555; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 24px; }
+#walk { position: fixed; inset: 0; z-index: 5000; /* above Leaflet's map panes */ background: #000; color: #555; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 24px; }
 #walk[hidden] { display: none; }
 #walkStatus { font-size: 1.1rem; }
 #walkLast { color: #777; min-height: 3em; }

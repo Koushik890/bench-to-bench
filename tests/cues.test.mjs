@@ -34,7 +34,6 @@ test("a whole walk speaks each cue once, in order", () => {
   const spoken = walkAll();
   assert.deepEqual(spoken, [
     "Walk started. Tea-stall bench in 150 metres.",
-    "Tea-stall bench in 100 metres.",
     "Tea-stall bench here. Rest if you like.",
     "In 30 metres, turn left.",
     "Bench in 100 metres.",
@@ -43,6 +42,17 @@ test("a whole walk speaks each cue once, in order", () => {
     "Bench here. Rest if you like.",
     "Walk complete. Well done.",
   ]);
+});
+
+test("a street full of seats does not turn into chatter", () => {
+  const dense = { ...route, turns: [], warnings: [],
+    seats: [0, 20, 40, 60, 60, 80, 100, 120, 140, 160, 180, 200, 220].map((at_m) => ({ at_m, kind: "platform_or_ledge" })) };
+  const said = new Set();
+  const spoken = [];
+  for (let at = 0; at <= 400; at += 5) spoken.push(...cuesAt(dense, at, 3, said, at * 1000));
+  assert.equal(spoken.filter((t) => t.includes(" in ") && !t.startsWith("Walk started")).length, 0, spoken.join(" | "));
+  const here = spoken.filter((t) => t.includes("here"));
+  assert.ok(here.length >= 4 && here.length <= 6, here.join(" | "));
 });
 
 test("off the route: warn, but at most every 30 seconds", () => {

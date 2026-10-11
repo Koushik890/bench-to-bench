@@ -71,17 +71,29 @@ export function cuesAt(route, at, off, said, now = Date.now()) {
   }
 
   if (!said.has("start")) {
-    const first = route.seats.find((s) => s.at_m > 20);
+    const first = route.seats.find((s) => s.at_m >= 20);
+    if (first) said.add(`seat-100-${first.at_m}`); // already announced by the start cue
     once("start", first
       ? `Walk started. ${seatWord(first.kind)} in ${roundTo10(first.at_m)} metres.`
       : "Walk started.");
   }
 
-  route.seats.forEach((s, i) => {
-    if (s.at_m < 20) return; // the bench you start from
+  // Seats: one spot per distance along the route (two benches side by side count once).
+  const spots = [...new Map(route.seats.filter((s) => s.at_m >= 20).map((s) => [s.at_m, s])).values()]
+    .sort((a, b) => a.at_m - b.at_m);
+  spots.forEach((s, i) => {
     const d = s.at_m - at;
-    if (d <= 15 && d >= -10) once(`seat-here-${i}`, `${seatWord(s.kind)} here. Rest if you like.`);
-    else if (d > 40 && d <= 100) once(`seat-100-${i}`, `${seatWord(s.kind)} in ${roundTo10(d)} metres.`);
+    if (d <= 15 && d >= -10) {
+      // In streets with many seats, one "here" every 40 m is enough.
+      if (said.lastHereAt === undefined || s.at_m - said.lastHereAt >= 40) {
+        if (!said.has(`seat-here-${s.at_m}`)) { said.lastHereAt = s.at_m; }
+        once(`seat-here-${s.at_m}`, `${seatWord(s.kind)} here. Rest if you like.`);
+      }
+    } else if (d > 40 && d <= 100) {
+      const previous = i ? spots[i - 1].at_m : 0;
+      const isNext = !spots.some((o) => o.at_m > at + 15 && o.at_m < s.at_m);
+      if (isNext && s.at_m - previous >= 60) once(`seat-100-${s.at_m}`, `${seatWord(s.kind)} in ${roundTo10(d)} metres.`);
+    }
   });
   route.turns.forEach((t, i) => {
     const d = t.at_m - at;
