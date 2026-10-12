@@ -1,0 +1,619 @@
+{
+ "city": "mainz",
+ "labels": 40,
+ "always_no": {
+  "seat": 0.925,
+  "steps": 1.0,
+  "broken_surface": 1.0,
+  "shade": 0.95
+ },
+ "models": [
+  {
+   "model": "gemma4:e4b",
+   "photos": 40,
+   "usable_answers": 40,
+   "failed": {},
+   "seconds_median": 0.93,
+   "seconds_mean": 1.19,
+   "fields": {
+    "seat": {
+     "correct": 38,
+     "of": 40,
+     "accuracy": 0.95,
+     "true_pos": 2,
+     "false_pos": 1,
+     "false_neg": 1,
+     "true_neg": 36,
+     "precision": 0.667,
+     "recall": 0.667
+    },
+    "steps": {
+     "correct": 24,
+     "of": 40,
+     "accuracy": 0.6,
+     "true_pos": 0,
+     "false_pos": 16,
+     "false_neg": 0,
+     "true_neg": 24,
+     "precision": 0.0,
+     "recall": null
+    },
+    "broken_surface": {
+     "correct": 40,
+     "of": 40,
+     "accuracy": 1.0,
+     "true_pos": 0,
+     "false_pos": 0,
+     "false_neg": 0,
+     "true_neg": 40,
+     "precision": null,
+     "recall": null
+    },
+    "shade": {
+     "correct": 14,
+     "of": 40,
+     "accuracy": 0.35,
+     "true_pos": 2,
+     "false_pos": 26,
+     "false_neg": 0,
+     "true_neg": 12,
+     "precision": 0.071,
+     "recall": 1.0
+    }
+   },
+   "mistakes": [
+    {
+     "photo": "1000891198977675",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "The immediate area near the camera is an open grassy field with no visible seating."
+    },
+    {
+     "photo": "1011607371182857",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "No clear seating options are visible in the immediate foreground area."
+    },
+    {
+     "photo": "1084284310213353",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "No visible seating options are clearly present near the camera within the immediate vicinity."
+    },
+    {
+     "photo": "1133642561990254",
+     "field": "steps",
+     "gemma": true,
+     "truth": false,
+     "note": "The immediate area near the camera has a raised curb and no visible seating."
+    },
+    {
+     "photo": "1133642561990254",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "The immediate area near the camera has a raised curb and no visible seating."
+    },
+    {
+     "photo": "1270132498155474",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "No clear seating options are visible in the immediate foreground area."
+    },
+    {
+     "photo": "1287583996406352",
+     "field": "seat",
+     "gemma": true,
+     "truth": false,
+     "note": "There is a visible bench near the left side of the path."
+    },
+    {
+     "photo": "1287583996406352",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "There is a visible bench near the left side of the path."
+    },
+    {
+     "photo": "1320968576170587",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "No clear seating options are visible in the immediate foreground area."
+    },
+    {
+     "photo": "1353833989490796",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "The immediate area is an open grassy field with no visible seating options."
+    },
+    {
+     "photo": "1386509323208868",
+     "field": "steps",
+     "gemma": true,
+     "truth": false,
+     "note": "There are no visible benches or seating areas immediately near the camera."
+    },
+    {
+     "photo": "1386509323208868",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "There are no visible benches or seating areas immediately near the camera."
+    },
+    {
+     "photo": "1398111569013702",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "No visible seating options are present in the immediate foreground area."
+    },
+    {
+     "photo": "1436760738496985",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "The immediate foreground is a paved area with shadows, but no visible seating is present."
+    },
+    {
+     "photo": "1489099005599085",
+     "field": "steps",
+     "gemma": true,
+     "truth": false,
+     "note": "The immediate area near the camera has a curb and no visible seating options."
+    },
+    {
+     "photo": "1519398533522093",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "No visible seating options are present in the immediate foreground area."
+    },
+    {
+     "photo": "1534806274732060",
+     "field": "steps",
+     "gemma": true,
+     "truth": false,
+     "note": "The immediate area near the camera shows a curb and no visible seating options."
+    },
+    {
+     "photo": "1534806274732060",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "The immediate area near the camera shows a curb and no visible seating options."
+    },
+    {
+     "photo": "1621064212647976",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "The immediate foreground shows shadows from trees, but no visible seating options are present."
+    },
+    {
+     "photo": "1710874073259089",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "No clear seating options are visible in the immediate foreground area."
+    },
+    {
+     "photo": "1740307813796316",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "The immediate area near the camera shows a path shaded by a large tree, but no visible seating."
+    },
+    {
+     "photo": "1900133340677216",
+     "field": "steps",
+     "gemma": true,
+     "truth": false,
+     "note": "The immediate area near the camera lacks any visible seating options for passers-by."
+    },
+    {
+     "photo": "1900133340677216",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "The immediate area near the camera lacks any visible seating options for passers-by."
+    },
+    {
+     "photo": "1927059791560432",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "There are no visible benches or seating areas immediately near the camera."
+    },
+    {
+     "photo": "2025483165029194",
+     "field": "steps",
+     "gemma": true,
+     "truth": false,
+     "note": "There is a raised concrete curb separating the path from the road, but no visible seating."
+    },
+    {
+     "photo": "2025483165029194",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "There is a raised concrete curb separating the path from the road, but no visible seating."
+    },
+    {
+     "photo": "2045494862743885",
+     "field": "steps",
+     "gemma": true,
+     "truth": false,
+     "note": "There is a raised curb separating the road from the sidewalk, but no visible seating."
+    },
+    {
+     "photo": "2045494862743885",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "There is a raised curb separating the road from the sidewalk, but no visible seating."
+    },
+    {
+     "photo": "25284584147904790",
+     "field": "steps",
+     "gemma": true,
+     "truth": false,
+     "note": "There are no visible benches or seating areas immediately near the camera."
+    },
+    {
+     "photo": "25284584147904790",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "There are no visible benches or seating areas immediately near the camera."
+    },
+    {
+     "photo": "4360182620881442",
+     "field": "steps",
+     "gemma": true,
+     "truth": false,
+     "note": "No clear seating options are visible immediately near the camera."
+    },
+    {
+     "photo": "612763115119258",
+     "field": "steps",
+     "gemma": true,
+     "truth": false,
+     "note": "There are no visible benches or seating areas immediately near the camera."
+    },
+    {
+     "photo": "612763115119258",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "There are no visible benches or seating areas immediately near the camera."
+    },
+    {
+     "photo": "649280031492904",
+     "field": "seat",
+     "gemma": false,
+     "truth": true,
+     "note": "There are steps leading up to the main path, but no visible seating area near the camera."
+    },
+    {
+     "photo": "649280031492904",
+     "field": "steps",
+     "gemma": true,
+     "truth": false,
+     "note": "There are steps leading up to the main path, but no visible seating area near the camera."
+    },
+    {
+     "photo": "695926273602514",
+     "field": "steps",
+     "gemma": true,
+     "truth": false,
+     "note": "The immediate area near the camera shows a curb and pavement, but no visible seating."
+    },
+    {
+     "photo": "732217629203237",
+     "field": "steps",
+     "gemma": true,
+     "truth": false,
+     "note": "The immediate area near the camera shows a curb and pavement, but no visible seating."
+    },
+    {
+     "photo": "744774091563369",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "No visible seating options are present in the immediate foreground area."
+    },
+    {
+     "photo": "874870851696106",
+     "field": "steps",
+     "gemma": true,
+     "truth": false,
+     "note": "There are no visible benches or seating areas immediately near the camera."
+    },
+    {
+     "photo": "879323391866058",
+     "field": "steps",
+     "gemma": true,
+     "truth": false,
+     "note": "The immediate area near the camera shows a curb and tram tracks, with no visible seating."
+    },
+    {
+     "photo": "879323391866058",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "The immediate area near the camera shows a curb and tram tracks, with no visible seating."
+    },
+    {
+     "photo": "930719073129385",
+     "field": "steps",
+     "gemma": true,
+     "truth": false,
+     "note": "The immediate area near the camera shows a curb and a crosswalk, but no visible seating."
+    },
+    {
+     "photo": "930719073129385",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "The immediate area near the camera shows a curb and a crosswalk, but no visible seating."
+    },
+    {
+     "photo": "960936106425438",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "There is a metal bench visible on the paved sidewalk near the street sign."
+    }
+   ]
+  },
+  {
+   "model": "gemma4:e2b",
+   "photos": 40,
+   "usable_answers": 40,
+   "failed": {},
+   "seconds_median": 0.6,
+   "seconds_mean": 0.87,
+   "fields": {
+    "seat": {
+     "correct": 38,
+     "of": 40,
+     "accuracy": 0.95,
+     "true_pos": 1,
+     "false_pos": 0,
+     "false_neg": 2,
+     "true_neg": 37,
+     "precision": 1.0,
+     "recall": 0.333
+    },
+    "steps": {
+     "correct": 39,
+     "of": 40,
+     "accuracy": 0.975,
+     "true_pos": 0,
+     "false_pos": 1,
+     "false_neg": 0,
+     "true_neg": 39,
+     "precision": 0.0,
+     "recall": null
+    },
+    "broken_surface": {
+     "correct": 40,
+     "of": 40,
+     "accuracy": 1.0,
+     "true_pos": 0,
+     "false_pos": 0,
+     "false_neg": 0,
+     "true_neg": 40,
+     "precision": null,
+     "recall": null
+    },
+    "shade": {
+     "correct": 18,
+     "of": 40,
+     "accuracy": 0.45,
+     "true_pos": 2,
+     "false_pos": 22,
+     "false_neg": 0,
+     "true_neg": 16,
+     "precision": 0.083,
+     "recall": 1.0
+    }
+   },
+   "mistakes": [
+    {
+     "photo": "1000891198977675",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "No obvious seating is visible in the immediate foreground area."
+    },
+    {
+     "photo": "1011607371182857",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "No obvious seating is visible in the immediate foreground of the street."
+    },
+    {
+     "photo": "1084284310213353",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "No obvious seating is visible near the camera in this view."
+    },
+    {
+     "photo": "1287583996406352",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "No obvious seating is visible in the immediate foreground."
+    },
+    {
+     "photo": "1320968576170587",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "No obvious seating is visible in the immediate foreground area."
+    },
+    {
+     "photo": "1353833989490796",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "There are no visible benches or seating areas in the immediate foreground."
+    },
+    {
+     "photo": "1436760738496985",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "No obvious seating is visible in the immediate foreground of the photo."
+    },
+    {
+     "photo": "1519398533522093",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "No obvious seating is visible in the immediate foreground of the street."
+    },
+    {
+     "photo": "1534806274732060",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "No obvious seating is visible near the camera in this street scene."
+    },
+    {
+     "photo": "1621064212647976",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "There are shadows cast on the pavement from trees, indicating shade is present."
+    },
+    {
+     "photo": "1710874073259089",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "No obvious seating is visible in the immediate foreground area."
+    },
+    {
+     "photo": "1740307813796316",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "No obvious seating is visible in the immediate foreground of the street."
+    },
+    {
+     "photo": "1900133340677216",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "No obvious seating is visible in the immediate vicinity of the camera."
+    },
+    {
+     "photo": "2025483165029194",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "No obvious seating is visible in the immediate vicinity of the camera."
+    },
+    {
+     "photo": "25284584147904790",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "No obvious seating is visible in the immediate vicinity of the camera."
+    },
+    {
+     "photo": "612763115119258",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "There are no visible benches or seating areas immediately near the camera."
+    },
+    {
+     "photo": "649280031492904",
+     "field": "seat",
+     "gemma": false,
+     "truth": true,
+     "note": "There are no visible benches or seating areas near the camera in this view."
+    },
+    {
+     "photo": "649280031492904",
+     "field": "steps",
+     "gemma": true,
+     "truth": false,
+     "note": "There are no visible benches or seating areas near the camera in this view."
+    },
+    {
+     "photo": "695926273602514",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "No obvious seating is visible near the camera in this street view."
+    },
+    {
+     "photo": "744774091563369",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "There are no visible benches or seating areas in the immediate foreground."
+    },
+    {
+     "photo": "845965878009140",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "No obvious seating is visible in the immediate vicinity of the camera."
+    },
+    {
+     "photo": "879323391866058",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "No obvious seating is visible near the camera in this street scene."
+    },
+    {
+     "photo": "928867469533135",
+     "field": "seat",
+     "gemma": false,
+     "truth": true,
+     "note": "No seating is visible in the immediate foreground area."
+    },
+    {
+     "photo": "928867469533135",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "No seating is visible in the immediate foreground area."
+    },
+    {
+     "photo": "930719073129385",
+     "field": "shade",
+     "gemma": true,
+     "truth": false,
+     "note": "No obvious seating is visible in the immediate foreground of the street."
+    }
+   ]
+  }
+ ],
+ "map_seat_detector": {
+  "correct": 34,
+  "of": 40,
+  "accuracy": 0.85,
+  "true_pos": 1,
+  "false_pos": 4,
+  "false_neg": 2,
+  "true_neg": 33,
+  "precision": 0.2,
+  "recall": 0.333
+ },
+ "map": null
+}

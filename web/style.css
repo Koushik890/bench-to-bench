@@ -1,0 +1,39 @@
+:root {
+  --green: #14532d;
+  --green-soft: #dcfce7;
+  --text: #1c1917;
+  --muted: #57534e;
+  --bg: #fafaf9;
+  --card: #ffffff;
+  --gemma: #c2410c;
+  --map: #1d4ed8;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; font: 17px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--text); background: var(--bg); }
+header { background: var(--green); color: #fff; padding: 14px 16px 10px; }
+header h1 { margin: 0; font-size: 1.4rem; }
+header p { margin: 2px 0 0; opacity: .85; font-size: .95rem; }
+main { max-width: 760px; margin: 0 auto; padding: 12px 16px 24px; }
+.controls { display: grid; gap: 8px; }
+.row { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip { border: 1.5px solid var(--green); background: var(--card); color: var(--green); border-radius: 999px; padding: 8px 14px; font: inherit; font-size: .95rem; min-height: 44px; }
+.chip[aria-pressed="true"] { background: var(--green); color: #fff; }
+.chip:disabled { opacity: .4; }
+#map { height: 52vh; min-height: 300px; margin: 12px 0; border-radius: 12px; border: 1px solid #d6d3d1; }
+#summary { background: var(--card); border-radius: 12px; padding: 12px 14px; border: 1px solid #e7e5e4; }
+#summary .big { font-size: 1.15rem; font-weight: 600; margin: 0 0 4px; }
+#summary ul { margin: 6px 0 0; padding-left: 18px; color: var(--muted); }
+#summary .bad { color: #b91c1c; font-weight: 600; }
+.actions { display: grid; gap: 10px; margin: 14px 0; }
+.actions button { font: inherit; font-size: 1.1rem; padding: 14px; border-radius: 12px; min-height: 52px; }
+.primary { background: var(--green); color: #fff; border: 0; }
+.secondary { background: var(--card); color: var(--green); border: 1.5px solid var(--green); }
+.actions button:disabled { opacity: .4; }
+.credits { color: var(--muted); font-size: .8rem; }
+.legend-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 4px; }
+#walk { position: fixed; inset: 0; z-index: 5000; /* above Leaflet's map panes */ background: #000; color: #555; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 24px; }
+#walk[hidden] { display: none; }
+#walkStatus { font-size: 1.1rem; }
+#walkLast { color: #777; min-height: 3em; }
+.hint { position: absolute; bottom: 24px; font-size: .85rem; color: #333; }

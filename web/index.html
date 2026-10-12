@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#14532d">
+  <title>Bench to Bench</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Bench to Bench</h1>
+    <p>A walk with a place to sit never far away.</p>
+  </header>
+
+  <main id="home">
+    <section class="controls" aria-label="Walk settings">
+      <div class="row" role="group" aria-label="City">
+        <button class="chip" data-city="mainz">Mainz</button>
+        <button class="chip" data-city="kolkata">Kolkata</button>
+      </div>
+      <div class="row" role="group" aria-label="Seats to use" id="sourceRow">
+        <button class="chip" data-source="map_only">Map only</button>
+        <button class="chip" data-source="with_gemma">Map + Gemma photos</button>
+      </div>
+      <div class="row" role="group" aria-label="Walk length" id="lengthRow"></div>
+    </section>
+
+    <div id="map" aria-label="Route map"></div>
+
+    <section id="summary" aria-live="polite"></section>
+
+    <div class="actions">
+      <button id="startWalk" class="primary">Start walk</button>
+      <button id="practiceWalk" class="secondary">Practice walk (no GPS)</button>
+    </div>
+
+    <p class="credits">
+      Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors (ODbL).
+      Street photos from <a href="https://www.mapillary.com">Mapillary</a> (CC BY-SA 4.0).
+      Places to sit in photos found by Gemma, running on a laptop. Routes are planned by plain code.
+    </p>
+  </main>
+
+  <div id="walk" hidden>
+    <p id="walkStatus">Phone in pocket. I will speak.</p>
+    <p id="walkLast"></p>
+    <p class="hint">Double-tap to stop</p>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

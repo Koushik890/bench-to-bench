@@ -5,3 +5,5 @@ __pycache__/
 node_modules/
 data/cache/
 captures/
+.claude/
+.artifacts/
