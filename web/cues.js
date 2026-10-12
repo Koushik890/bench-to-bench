@@ -28,7 +28,7 @@ export function pointAt(route, at) {
 export function locate(route, point, lastAt = 0, back = 40, ahead = 250) {
   const { path, cum_m: cum } = route;
   const kx = Math.cos(rad(point[0])) * 111320, ky = 110540; // metres per degree, local flat approximation
-  let best = { at: lastAt, off: Infinity };
+  const candidates = [];
   for (let i = 1; i < path.length; i++) {
     if (cum[i] < lastAt - back || cum[i - 1] > lastAt + ahead) continue;
     const ax = path[i - 1][1] * kx, ay = path[i - 1][0] * ky, bx = path[i][1] * kx, by = path[i][0] * ky;
@@ -36,9 +36,14 @@ export function locate(route, point, lastAt = 0, back = 40, ahead = 250) {
     const len2 = (bx - ax) ** 2 + (by - ay) ** 2 || 1;
     const t = Math.min(1, Math.max(0, ((px - ax) * (bx - ax) + (py - ay) * (by - ay)) / len2));
     const off = Math.hypot(px - (ax + t * (bx - ax)), py - (ay + t * (by - ay)));
-    if (off < best.off) best = { at: cum[i - 1] + t * (cum[i] - cum[i - 1]), off };
+    candidates.push({ at: cum[i - 1] + t * (cum[i] - cum[i - 1]), off });
   }
-  return best;
+  if (!candidates.length) return { at: lastAt, off: Infinity };
+  // A street walked twice (out and back) matches twice. Of the near-equal matches,
+  // take the one closest to where the walker just was, so the walk never skips ahead.
+  const nearest = Math.min(...candidates.map((c) => c.off));
+  return candidates.filter((c) => c.off <= nearest + 5)
+    .reduce((a, b) => (Math.abs(b.at - lastAt) < Math.abs(a.at - lastAt) ? b : a));
 }
 
 const SEAT_WORDS = {

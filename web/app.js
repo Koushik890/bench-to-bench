@@ -1,7 +1,7 @@
 import { cuesAt, distanceM, locate, pointAt, seatWord } from "./cues.js";
 import { attachPoints, bboxAround, buildGraph, fetchOsm, parse, planWalks } from "./planner.js";
 
-const state = { city: "here", source: "with_gemma", target: 1000, data: {}, route: null };
+const state = { source: "with_gemma", target: 1000, data: null, route: null };
 const $ = (sel) => document.querySelector(sel);
 const NEAR_ME_RADIUS_M = 900;
 const NEAR_ME_LENGTHS = [250, 600, 1000, 1500];
@@ -13,14 +13,7 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 }).addTo(map);
 const layer = L.layerGroup().addTo(map);
-map.setView([30, 40], 2); // until a place is loaded
-
-async function loadCity(city) {
-  if (!state.data[city]) {
-    state.data[city] = city === "here" ? await loadNearMe() : await (await fetch(`data/${city}.json`)).json();
-  }
-  return state.data[city];
-}
+map.setView([30, 40], 2); // until your location is known
 
 function currentPosition() {
   return new Promise((resolve, reject) => {
@@ -68,17 +61,15 @@ function setPressed(selector, attr, value) {
 }
 
 async function render() {
-  setPressed("[data-city]", "city", state.city);
   let data;
   try {
-    data = await loadCity(state.city);
+    data = state.data ||= await loadNearMe();
   } catch (err) {
     showProblem(err);
     return;
   }
   if (!data.with_gemma) state.source = "map_only";
   $("#sourceRow").hidden = !data.with_gemma;
-  setPressed("[data-city]", "city", state.city);
   setPressed("[data-source]", "source", state.source);
 
   const v = variant(data);
@@ -115,12 +106,12 @@ async function render() {
 function showProblem(err) {
   const denied = err && err.code === 1;
   $("#summary").innerHTML = `<p class="big bad">${denied ? "Location is off." : "Could not plan walks here."}</p>` +
-    `<p>${denied ? "Allow location for this page to find walks near you." : err.message || "Please try again."} ` +
-    `Or try an example: Mainz or Kolkata.</p>`;
+    `<p>${denied ? "Allow location for this page to find walks near you." : err.message || "Please try again."}</p>` +
+    `<button class="chip" id="retry">Try again</button>`;
   $("#lengthRow").innerHTML = "";
   $("#sourceRow").hidden = true;
   $("#startWalk").disabled = $("#practiceWalk").disabled = true;
-  delete state.data.here; // try again on the next tap
+  state.data = null;
 }
 
 function addSeat(s) {
@@ -151,7 +142,7 @@ function renderSummary(data, v) {
     html += `<p>${v.no_route_reason ? "The map is no help: " + v.no_route_reason + "." : "No loop keeps every stretch under " + data.max_gap_m + " m between seats."}</p>`;
   }
   const coverage = v.coverage_75m === undefined ? "" : `, ${Math.round(v.coverage_75m * 100)}% of streets within 75 m of one`;
-  const startNote = r && state.city === "here" && v.start_seat_from_start_m > 30 ? `. The walk starts at a seat ${v.start_seat_from_start_m} m from you` : "";
+  const startNote = r && v.start_seat_from_start_m > 30 ? `. The walk starts at a seat ${v.start_seat_from_start_m} m from you` : "";
   html += `<ul><li>${data.name}: ${v.seats_total} known places to sit${coverage}${startNote}</li></ul>`;
   $("#summary").innerHTML = html;
 }
@@ -163,7 +154,7 @@ function speak(text) {
   $("#walkLast").textContent = text;
   if (!("speechSynthesis" in window)) return;
   const u = new SpeechSynthesisUtterance(text);
-  u.lang = state.city === "kolkata" ? "en-IN" : "en-GB";
+  u.lang = navigator.language || "en";
   u.rate = 0.95;
   speechSynthesis.speak(u);
 }
@@ -214,7 +205,7 @@ function stopWalk() {
 document.addEventListener("click", (e) => {
   const b = e.target.closest("button");
   if (!b || b.disabled) return;
-  if (b.dataset.city) { state.city = b.dataset.city; state.source = b.dataset.city === "mainz" ? "map_only" : "with_gemma"; render(); }
+  if (b.id === "retry") render();
   else if (b.dataset.source) { state.source = b.dataset.source; render(); }
   else if (b.dataset.target) { state.target = Number(b.dataset.target); render(); }
 });

@@ -70,6 +70,15 @@ test("locate snaps a GPS point to the route and measures how far off it is", () 
   assert.ok(Math.abs(pos.off - 10) < 1, `off ${pos.off}`);
 });
 
+test("locate does not skip ahead on a street walked out and back", () => {
+  // 100 m east, then the same 100 m back west: every point matches twice.
+  const there = [0, 50, 100].map((m) => [lat, lon0 + m / mPerDegLon]);
+  const outBack = { path: [...there, there[1], there[0]], cum_m: [0, 50, 100, 150, 200] };
+  const p = pointAt(outBack, 40);
+  const pos = locate(outBack, p, 30);
+  assert.ok(Math.abs(pos.at - 40) < 1, `at ${pos.at}`);
+});
+
 test("locate only searches near the last position", () => {
   // From 0 m the window ends at 250 m, so a point at 390 m only matches the 300 m end of the window.
   const pos = locate(route, pointAt(route, 390), 0);
