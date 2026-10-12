@@ -1,11 +1,12 @@
 """Local server for the phone app and the photo labelling page.
 
-Usage: python scripts/serve.py            then open http://localhost:8000/web/  or  http://localhost:8000/label
+Usage: python scripts/serve.py [port] [city]      e.g.  python scripts/serve.py 8000 mainz
+then open http://localhost:8000/web/  or  http://localhost:8000/label
 - /web/...          the phone app
 - /label            the labelling page (tools/label.html)
-- /photos/<id>.jpg  downloaded street photos (local only, never published)
-- /sample           the photo ids to label, with any answers saved so far
-- POST /labels      saves your answers to eval/labels.json
+- /photos/<id>.jpg  downloaded street photos of the labelling city (local only, never published)
+- /sample           the city, the photo ids to label, and any answers saved so far
+- POST /labels      saves your answers to eval/labels_<city>.json
 """
 import json
 import sys
@@ -15,10 +16,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from bench_to_bench import sample  # noqa: E402
+from bench_to_bench import gemma, sample  # noqa: E402
 
-CITY = "kolkata"
-LABELS = ROOT / "eval/labels.json"
+CITY = sys.argv[2] if len(sys.argv) > 2 else "mainz"
+LABELS = ROOT / f"eval/labels_{CITY}.json"
 
 
 def sample_ids():
@@ -34,7 +35,8 @@ class Handler(SimpleHTTPRequestHandler):
             return self._send(200, (ROOT / "tools/label.html").read_bytes(), "text/html; charset=utf-8")
         if self.path == "/sample":
             saved = json.loads(LABELS.read_text(encoding="utf-8")) if LABELS.exists() else {}
-            return self._send(200, json.dumps({"ids": sample_ids(), "labels": saved}).encode(), "application/json")
+            body = {"city": gemma.PLACES[CITY], "ids": sample_ids(), "labels": saved}
+            return self._send(200, json.dumps(body).encode(), "application/json")
         if self.path.startswith("/photos/"):
             name = Path(self.path).name
             photo = ROOT / "data/cache/photos" / CITY / name
@@ -69,5 +71,5 @@ class Handler(SimpleHTTPRequestHandler):
 
 if __name__ == "__main__":
     port = int(sys.argv[1]) if len(sys.argv) > 1 else 8000
-    print(f"Serving on http://localhost:{port}/web/  and  http://localhost:{port}/label")
+    print(f"Serving on http://localhost:{port}/web/  and  http://localhost:{port}/label  (labelling {CITY})")
     ThreadingHTTPServer(("127.0.0.1", port), Handler).serve_forever()

@@ -44,7 +44,7 @@ def main():
         if results.get(photo["id"], {}).get("ok"):
             continue  # failed photos are tried again on a rerun
         image = ROOT / "data/cache/photos" / args.city / f"{photo['id']}.jpg"
-        results[photo["id"]] = gemma.describe_photo(image, args.model)
+        results[photo["id"]] = gemma.describe_photo(image, args.model, place=gemma.PLACES[args.city])
         r = results[photo["id"]]
         status = "seat" if r["ok"] and r["answer"]["seat"] else ("ok" if r["ok"] else "FAILED " + "; ".join(r["problems"])[:80])
         print(f"{i}/{len(photos)} {photo['id']} {r['seconds']}s {status}", flush=True)

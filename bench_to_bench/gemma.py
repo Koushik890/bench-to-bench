@@ -33,7 +33,9 @@ SCHEMA = {
     "required": list(FIELDS),
 }
 
-PROMPT = """You are helping an older man with knee pain plan a walk in Kolkata, India.
+PLACES = {"kolkata": "Kolkata, India", "mainz": "Mainz, Germany"}
+
+PROMPT = """You are helping an older man with knee pain plan a walk in {place}.
 Look at this street photo and answer only about what is clearly visible near the camera (within about 20 metres).
 
 seat: true if there is somewhere a tired adult could sit down for a few minutes and that is open to passers-by:
@@ -66,8 +68,8 @@ def validate(answer):
     return problems
 
 
-def describe_photo(image_path, model, url=OLLAMA_URL, timeout=300):
-    """Ask Gemma about one photo.
+def describe_photo(image_path, model, place="Kolkata, India", url=OLLAMA_URL, timeout=300):
+    """Ask Gemma about one photo taken in `place`.
 
     Returns {"ok": bool, "answer": dict | None, "problems": [...], "seconds": float, "raw": str}.
     ok is False when Ollama fails, the reply is not JSON, or validate() finds problems.
@@ -75,7 +77,7 @@ def describe_photo(image_path, model, url=OLLAMA_URL, timeout=300):
     image_b64 = base64.b64encode(open(image_path, "rb").read()).decode()
     body = json.dumps({
         "model": model,
-        "messages": [{"role": "user", "content": PROMPT, "images": [image_b64]}],
+        "messages": [{"role": "user", "content": PROMPT.format(place=place), "images": [image_b64]}],
         "format": SCHEMA,
         "stream": False,
         "think": False,

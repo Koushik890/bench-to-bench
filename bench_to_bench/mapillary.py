@@ -32,6 +32,21 @@ def list_images(bbox, token, limit=2000):
     return images
 
 
+def list_images_tiled(bbox, token, tiles=4):
+    """list_images over a tiles x tiles grid: busy areas make the API fail on one big box."""
+    s, w, n, e = bbox
+    dlat, dlon = (n - s) / tiles, (e - w) / tiles
+    seen, images = set(), []
+    for i in range(tiles):
+        for j in range(tiles):
+            box = (s + i * dlat, w + j * dlon, s + (i + 1) * dlat, w + (j + 1) * dlon)
+            for im in list_images(box, token):
+                if im["id"] not in seen:
+                    seen.add(im["id"])
+                    images.append(im)
+    return images
+
+
 def download(image, folder):
     """Save the 1024 px thumbnail as folder/<id>.jpg (skips files already there). Returns the path."""
     path = Path(folder) / f"{image['id']}.jpg"

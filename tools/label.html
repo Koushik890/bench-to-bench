@@ -26,24 +26,24 @@
 </head>
 <body>
   <header>
-    <h1>Label 40 Kolkata street photos</h1>
+    <h1 id="title">Label 40 street photos</h1>
     <p>Answer each question for what is visible near the camera (about 20 m). <span id="status"></span></p>
   </header>
   <main id="list"></main>
   <script>
     const QUESTIONS = [
-      ["seat", "A place to sit?", "Bench, tea-stall bench, raised platform or ledge, building steps, chair — open to passers-by"],
+      ["seat", "A place to sit?", "Bench, tea-stall bench, raised platform or ledge, building steps, chair. Open to passers-by."],
       ["steps", "Steps or a high kerb to climb?", "On the footpath or the way ahead, higher than about 15 cm"],
       ["broken_surface", "Broken or blocked footpath?", "Potholes, dug up, rubble, broken paving"],
       ["shade", "Shade where you'd walk?", "Trees or awnings over the footpath"],
     ];
-    let ids = [], labels = {}, saveTimer = null;
+    let ids = [], labels = {}, city = "", saveTimer = null;
 
     function render() {
       const list = document.getElementById("list");
       list.innerHTML = ids.map((id, i) => `
         <section class="photo" id="p${id}">
-          <img loading="lazy" src="/photos/${id}.jpg" alt="Street photo ${i + 1} of ${ids.length} from Kolkata">
+          <img loading="lazy" src="/photos/${id}.jpg" alt="Street photo ${i + 1} of ${ids.length} from ${city}">
           <div class="num">${i + 1} / ${ids.length} · <a href="https://www.mapillary.com/app/?pKey=${id}" target="_blank" rel="noopener">photo ${id} on Mapillary</a></div>
           ${QUESTIONS.map(([key, q, hint]) => `
             <div class="q"><span>${q}<small>${hint}</small></span>
@@ -81,7 +81,11 @@
       save();
     });
 
-    fetch("/sample").then((r) => r.json()).then((d) => { ids = d.ids; labels = d.labels || {}; render(); });
+    fetch("/sample").then((r) => r.json()).then((d) => {
+      ids = d.ids; labels = d.labels || {}; city = d.city;
+      document.getElementById("title").textContent = `Label ${ids.length} street photos from ${city}`;
+      render();
+    });
   </script>
 </body>
 </html>
