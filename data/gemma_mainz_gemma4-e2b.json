@@ -1,0 +1,562 @@
+{
+ "1000891198977675": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": true,
+   "note": "No obvious seating is visible in the immediate foreground area."
+  },
+  "problems": [],
+  "seconds": 11.05,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": true, \"note\": \"No obvious seating is visible in the immediate foreground area.\"}"
+ },
+ "1011607371182857": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": true,
+   "note": "No obvious seating is visible in the immediate foreground of the street."
+  },
+  "problems": [],
+  "seconds": 0.52,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": true, \"note\": \"No obvious seating is visible in the immediate foreground of the street.\"}"
+ },
+ "1084284310213353": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": true,
+   "note": "No obvious seating is visible near the camera in this view."
+  },
+  "problems": [],
+  "seconds": 0.61,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": true, \"note\": \"No obvious seating is visible near the camera in this view.\"}"
+ },
+ "1133642561990254": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": false,
+   "note": "No obvious seating areas are visible in the immediate vicinity of the road."
+  },
+  "problems": [],
+  "seconds": 0.63,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": false, \"note\": \"No obvious seating areas are visible in the immediate vicinity of the road.\"}"
+ },
+ "1270132498155474": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": false,
+   "note": "No obvious seating or steps are visible in the immediate foreground."
+  },
+  "problems": [],
+  "seconds": 0.57,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": false, \"note\": \"No obvious seating or steps are visible in the immediate foreground.\"}"
+ },
+ "1287583996406352": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": true,
+   "note": "No obvious seating is visible in the immediate foreground."
+  },
+  "problems": [],
+  "seconds": 0.55,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": true, \"note\": \"No obvious seating is visible in the immediate foreground.\"}"
+ },
+ "1300563588612291": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": true,
+   "note": "There are no visible benches or seating areas in the immediate vicinity."
+  },
+  "problems": [],
+  "seconds": 0.62,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": true, \"note\": \"There are no visible benches or seating areas in the immediate vicinity.\"}"
+ },
+ "1320968576170587": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": true,
+   "note": "No obvious seating is visible in the immediate foreground area."
+  },
+  "problems": [],
+  "seconds": 0.63,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": true, \"note\": \"No obvious seating is visible in the immediate foreground area.\"}"
+ },
+ "1342559874449477": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": false,
+   "note": "No obvious seating options are visible in the immediate vicinity of the camera."
+  },
+  "problems": [],
+  "seconds": 0.6,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": false, \"note\": \"No obvious seating options are visible in the immediate vicinity of the camera.\"}"
+ },
+ "1353833989490796": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": true,
+   "note": "There are no visible benches or seating areas in the immediate foreground."
+  },
+  "problems": [],
+  "seconds": 0.6,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": true, \"note\": \"There are no visible benches or seating areas in the immediate foreground.\"}"
+ },
+ "1386509323208868": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": false,
+   "note": "No obvious seating or steps are visible immediately near the camera."
+  },
+  "problems": [],
+  "seconds": 0.62,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": false, \"note\": \"No obvious seating or steps are visible immediately near the camera.\"}"
+ },
+ "1398111569013702": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": false,
+   "note": "No obvious seating options are visible in the immediate vicinity of the camera."
+  },
+  "problems": [],
+  "seconds": 0.6,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": false, \"note\": \"No obvious seating options are visible in the immediate vicinity of the camera.\"}"
+ },
+ "1436760738496985": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": true,
+   "note": "No obvious seating is visible in the immediate foreground of the photo."
+  },
+  "problems": [],
+  "seconds": 0.58,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": true, \"note\": \"No obvious seating is visible in the immediate foreground of the photo.\"}"
+ },
+ "1489099005599085": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": false,
+   "note": "No obvious seating or steps are visible immediately near the camera."
+  },
+  "problems": [],
+  "seconds": 0.6,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": false, \"note\": \"No obvious seating or steps are visible immediately near the camera.\"}"
+ },
+ "1519398533522093": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": true,
+   "note": "No obvious seating is visible in the immediate foreground of the street."
+  },
+  "problems": [],
+  "seconds": 0.59,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": true, \"note\": \"No obvious seating is visible in the immediate foreground of the street.\"}"
+ },
+ "1534806274732060": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": true,
+   "note": "No obvious seating is visible near the camera in this street scene."
+  },
+  "problems": [],
+  "seconds": 0.64,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": true, \"note\": \"No obvious seating is visible near the camera in this street scene.\"}"
+ },
+ "1621064212647976": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": true,
+   "note": "There are shadows cast on the pavement from trees, indicating shade is present."
+  },
+  "problems": [],
+  "seconds": 0.67,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": true, \"note\": \"There are shadows cast on the pavement from trees, indicating shade is present.\"}"
+ },
+ "1710874073259089": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": true,
+   "note": "No obvious seating is visible in the immediate foreground area."
+  },
+  "problems": [],
+  "seconds": 0.6,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": true, \"note\": \"No obvious seating is visible in the immediate foreground area.\"}"
+ },
+ "1740307813796316": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": true,
+   "note": "No obvious seating is visible in the immediate foreground of the street."
+  },
+  "problems": [],
+  "seconds": 0.59,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": true, \"note\": \"No obvious seating is visible in the immediate foreground of the street.\"}"
+ },
+ "1900133340677216": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": true,
+   "note": "No obvious seating is visible in the immediate vicinity of the camera."
+  },
+  "problems": [],
+  "seconds": 0.6,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": true, \"note\": \"No obvious seating is visible in the immediate vicinity of the camera.\"}"
+ },
+ "1927059791560432": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": false,
+   "note": "No obvious seating or steps are visible immediately near the camera."
+  },
+  "problems": [],
+  "seconds": 0.6,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": false, \"note\": \"No obvious seating or steps are visible immediately near the camera.\"}"
+ },
+ "2025483165029194": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": true,
+   "note": "No obvious seating is visible in the immediate vicinity of the camera."
+  },
+  "problems": [],
+  "seconds": 0.58,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": true, \"note\": \"No obvious seating is visible in the immediate vicinity of the camera.\"}"
+ },
+ "2045494862743885": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": false,
+   "note": "No obvious seating or significant obstacles are visible immediately near the camera."
+  },
+  "problems": [],
+  "seconds": 0.66,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": false, \"note\": \"No obvious seating or significant obstacles are visible immediately near the camera.\"}"
+ },
+ "2454265878333256": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": false,
+   "note": "No obvious seating options are visible in the immediate foreground of the street."
+  },
+  "problems": [],
+  "seconds": 0.61,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": false, \"note\": \"No obvious seating options are visible in the immediate foreground of the street.\"}"
+ },
+ "25284584147904790": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": true,
+   "note": "No obvious seating is visible in the immediate vicinity of the camera."
+  },
+  "problems": [],
+  "seconds": 0.62,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": true, \"note\": \"No obvious seating is visible in the immediate vicinity of the camera.\"}"
+ },
+ "4228012750771428": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": false,
+   "note": "No obvious seating areas are visible immediately near the camera on the pavement."
+  },
+  "problems": [],
+  "seconds": 0.64,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": false, \"note\": \"No obvious seating areas are visible immediately near the camera on the pavement.\"}"
+ },
+ "4360182620881442": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": false,
+   "note": "No obvious seating options are visible immediately near the camera."
+  },
+  "problems": [],
+  "seconds": 0.58,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": false, \"note\": \"No obvious seating options are visible immediately near the camera.\"}"
+ },
+ "612763115119258": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": true,
+   "note": "There are no visible benches or seating areas immediately near the camera."
+  },
+  "problems": [],
+  "seconds": 0.6,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": true, \"note\": \"There are no visible benches or seating areas immediately near the camera.\"}"
+ },
+ "649280031492904": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": true,
+   "broken_surface": false,
+   "shade": false,
+   "note": "There are no visible benches or seating areas near the camera in this view."
+  },
+  "problems": [],
+  "seconds": 0.65,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": true, \"broken_surface\": false, \"shade\": false, \"note\": \"There are no visible benches or seating areas near the camera in this view.\"}"
+ },
+ "695926273602514": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": true,
+   "note": "No obvious seating is visible near the camera in this street view."
+  },
+  "problems": [],
+  "seconds": 0.6,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": true, \"note\": \"No obvious seating is visible near the camera in this street view.\"}"
+ },
+ "732217629203237": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": false,
+   "note": "No obvious seating or steps are visible immediately near the camera."
+  },
+  "problems": [],
+  "seconds": 0.57,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": false, \"note\": \"No obvious seating or steps are visible immediately near the camera.\"}"
+ },
+ "744774091563369": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": true,
+   "note": "There are no visible benches or seating areas in the immediate foreground."
+  },
+  "problems": [],
+  "seconds": 0.64,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": true, \"note\": \"There are no visible benches or seating areas in the immediate foreground.\"}"
+ },
+ "752853524006563": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": false,
+   "note": "No obvious seating or steps are visible immediately near the camera."
+  },
+  "problems": [],
+  "seconds": 0.7,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": false, \"note\": \"No obvious seating or steps are visible immediately near the camera.\"}"
+ },
+ "845965878009140": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": true,
+   "note": "No obvious seating is visible in the immediate vicinity of the camera."
+  },
+  "problems": [],
+  "seconds": 0.67,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": true, \"note\": \"No obvious seating is visible in the immediate vicinity of the camera.\"}"
+ },
+ "874870851696106": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": true,
+   "note": "No obvious seating is visible near the camera in this view."
+  },
+  "problems": [],
+  "seconds": 0.64,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": true, \"note\": \"No obvious seating is visible near the camera in this view.\"}"
+ },
+ "879323391866058": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": true,
+   "note": "No obvious seating is visible near the camera in this street scene."
+  },
+  "problems": [],
+  "seconds": 0.6,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": true, \"note\": \"No obvious seating is visible near the camera in this street scene.\"}"
+ },
+ "928867469533135": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": true,
+   "note": "No seating is visible in the immediate foreground area."
+  },
+  "problems": [],
+  "seconds": 0.6,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": true, \"note\": \"No seating is visible in the immediate foreground area.\"}"
+ },
+ "930719073129385": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": true,
+   "note": "No obvious seating is visible in the immediate foreground of the street."
+  },
+  "problems": [],
+  "seconds": 0.64,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": true, \"note\": \"No obvious seating is visible in the immediate foreground of the street.\"}"
+ },
+ "932914866360871": {
+  "ok": true,
+  "answer": {
+   "seat": false,
+   "seat_type": "none",
+   "steps": false,
+   "broken_surface": false,
+   "shade": false,
+   "note": "There are no visible benches, platforms, or steps in the immediate foreground."
+  },
+  "problems": [],
+  "seconds": 0.65,
+  "raw": "{\"seat\": false, \"seat_type\": \"none\", \"steps\": false, \"broken_surface\": false, \"shade\": false, \"note\": \"There are no visible benches, platforms, or steps in the immediate foreground.\"}"
+ },
+ "960936106425438": {
+  "ok": true,
+  "answer": {
+   "seat": true,
+   "seat_type": "bench",
+   "steps": false,
+   "broken_surface": false,
+   "shade": false,
+   "note": "A metal bench is clearly visible on the sidewalk near the camera."
+  },
+  "problems": [],
+  "seconds": 0.6,
+  "raw": "{\"seat\": true, \"seat_type\": \"bench\", \"steps\": false, \"broken_surface\": false, \"shade\": false, \"note\": \"A metal bench is clearly visible on the sidewalk near the camera.\"}"
+ }
+}
