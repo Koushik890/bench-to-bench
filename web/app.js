@@ -1,7 +1,10 @@
 import { cuesAt, distanceM, locate, pointAt, seatWord } from "./cues.js";
+import { attachPoints, bboxAround, buildGraph, fetchOsm, parse, planWalks } from "./planner.js";
 
-const state = { city: "mainz", source: "map_only", target: 1000, data: {}, route: null };
+const state = { city: "here", source: "with_gemma", target: 1000, data: {}, route: null };
 const $ = (sel) => document.querySelector(sel);
+const NEAR_ME_RADIUS_M = 900;
+const NEAR_ME_LENGTHS = [250, 600, 1000, 1500];
 
 // ---------- map ----------
 const map = L.map("map", { zoomControl: true });
@@ -10,10 +13,46 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 }).addTo(map);
 const layer = L.layerGroup().addTo(map);
+map.setView([30, 40], 2); // until a place is loaded
 
 async function loadCity(city) {
-  if (!state.data[city]) state.data[city] = await (await fetch(`data/${city}.json`)).json();
+  if (!state.data[city]) {
+    state.data[city] = city === "here" ? await loadNearMe() : await (await fetch(`data/${city}.json`)).json();
+  }
   return state.data[city];
+}
+
+function currentPosition() {
+  return new Promise((resolve, reject) => {
+    if (!("geolocation" in navigator)) reject(new Error("This browser cannot share its location."));
+    else navigator.geolocation.getCurrentPosition(resolve, reject, { enableHighAccuracy: true, timeout: 20000, maximumAge: 60000 });
+  });
+}
+
+// Plan walks around where the phone is: map benches, plus any seats Gemma found in photos of this area.
+async function loadNearMe() {
+  $("#summary").innerHTML = `<p class="big">Finding places to sit near you…</p>`;
+  const pos = await currentPosition();
+  const point = [pos.coords.latitude, pos.coords.longitude];
+  const bbox = bboxAround(...point, NEAR_ME_RADIUS_M);
+  const osmData = parse(await fetchOsm(bbox));
+  const graph = buildGraph(osmData.ways);
+  const mapSeats = attachPoints(graph, osmData.seats);
+  const toilets = attachPoints(graph, osmData.toilets, 60);
+  let gemmaSeats = [];
+  try {
+    const all = await (await fetch("../data/gemma_seats_kolkata.json")).json();
+    const [s, w, n, e] = bbox;
+    gemmaSeats = attachPoints(graph, all.filter((p) => p.lat >= s && p.lat <= n && p.lon >= w && p.lon <= e));
+  } catch { /* no photo seats published for this area */ }
+  const data = {
+    name: "Near you",
+    start: { name: "You are here", lat: point[0], lon: point[1] },
+    max_gap_m: 150,
+    map_only: planWalks(graph, mapSeats, toilets, point, NEAR_ME_LENGTHS),
+  };
+  if (gemmaSeats.length) data.with_gemma = planWalks(graph, mapSeats.concat(gemmaSeats), toilets, point, NEAR_ME_LENGTHS);
+  return data;
 }
 
 function variant(data) {
@@ -29,7 +68,14 @@ function setPressed(selector, attr, value) {
 }
 
 async function render() {
-  const data = await loadCity(state.city);
+  setPressed("[data-city]", "city", state.city);
+  let data;
+  try {
+    data = await loadCity(state.city);
+  } catch (err) {
+    showProblem(err);
+    return;
+  }
   if (!data.with_gemma) state.source = "map_only";
   $("#sourceRow").hidden = !data.with_gemma;
   setPressed("[data-city]", "city", state.city);
@@ -66,6 +112,17 @@ async function render() {
   $("#startWalk").disabled = $("#practiceWalk").disabled = !state.route;
 }
 
+function showProblem(err) {
+  const denied = err && err.code === 1;
+  $("#summary").innerHTML = `<p class="big bad">${denied ? "Location is off." : "Could not plan walks here."}</p>` +
+    `<p>${denied ? "Allow location for this page to find walks near you." : err.message || "Please try again."} ` +
+    `Or try an example: Mainz or Kolkata.</p>`;
+  $("#lengthRow").innerHTML = "";
+  $("#sourceRow").hidden = true;
+  $("#startWalk").disabled = $("#practiceWalk").disabled = true;
+  delete state.data.here; // try again on the next tap
+}
+
 function addSeat(s) {
   const gemma = s.source === "gemma";
   const popup = gemma
@@ -93,7 +150,9 @@ function renderSummary(data, v) {
     html += `<p class="big bad">No safe walk possible here.</p>`;
     html += `<p>${v.no_route_reason ? "The map is no help: " + v.no_route_reason + "." : "No loop keeps every stretch under " + data.max_gap_m + " m between seats."}</p>`;
   }
-  html += `<ul><li>${data.name}: ${v.seats_total} known places to sit, ${Math.round(v.coverage_75m * 100)}% of streets within 75 m of one</li></ul>`;
+  const coverage = v.coverage_75m === undefined ? "" : `, ${Math.round(v.coverage_75m * 100)}% of streets within 75 m of one`;
+  const startNote = r && state.city === "here" && v.start_seat_from_start_m > 30 ? `. The walk starts at a seat ${v.start_seat_from_start_m} m from you` : "";
+  html += `<ul><li>${data.name}: ${v.seats_total} known places to sit${coverage}${startNote}</li></ul>`;
   $("#summary").innerHTML = html;
 }
 
@@ -155,7 +214,7 @@ function stopWalk() {
 document.addEventListener("click", (e) => {
   const b = e.target.closest("button");
   if (!b || b.disabled) return;
-  if (b.dataset.city) { state.city = b.dataset.city; state.source = b.dataset.city === "kolkata" ? "with_gemma" : "map_only"; render(); }
+  if (b.dataset.city) { state.city = b.dataset.city; state.source = b.dataset.city === "mainz" ? "map_only" : "with_gemma"; render(); }
   else if (b.dataset.source) { state.source = b.dataset.source; render(); }
   else if (b.dataset.target) { state.target = Number(b.dataset.target); render(); }
 });
